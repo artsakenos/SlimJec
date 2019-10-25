@@ -1,0 +1,28 @@
+/* 
+    Created on : 25 ott 2019, 12:08:05
+    Author     : artsakenos
+*/
+
+body {
+    padding: 10px;
+}
+
+.jec_field_label {
+    color: blue;
+    font-weight: bold;
+}
+
+/* You Can hide your custom fields you don't care about. */
+.jec_field_created_epoch {
+    display: none;
+}
+
+#search_container {
+    padding: 20px;
+    border: blanchedalmond solid;
+    margin-bottom: 10px;
+}
+
+#credentials {
+    padding: 20px;
+}

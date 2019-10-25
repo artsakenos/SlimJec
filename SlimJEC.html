@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+Slim Javascript Elasticsearch Client.
+
+Created on : 25 ott 2019, 12:08:05
+Author     : artsakenos
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <!-- JQuery e Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <title>SlimJEC: UltraSlim Java ElasticSearchClient</title>
+        <link rel="stylesheet" href="./SlimJEC.css">
+        <script type="application/javascript" src="SlimJEC_Config.js"></script>
+        <script type="application/javascript" src="SlimJEC.js"></script>        
+    </head>
+    <body>
+        <div class="container">
+
+            <h1>Slim Java Elasticsearch Client</h1>
+
+            <div id="credentials" class="container">
+                <button type="button" class="btn btn-credentials btn-info" data-toggle="collapse" data-target="#collapse_credentials">Login by Credentials</button>
+                Edit the file Config.js. or... set your credentials here as well.
+                <div id="collapse_credentials" class="collapse">
+                    <table>
+                        <tr>
+                            <td style="text-align: right">ElasticSearch, search URL (must end with (_search)</td>
+                            <td><input type="text" id="conf_url"/></td>                            
+                        </tr>
+                        <tr>
+                            <td style="text-align: right">UserName (empty if not needed)</td>
+                            <td><input type="text" id="conf_user"/></td>                            
+                        </tr>
+                        <tr>
+                            <td style="text-align: right">Password</td>
+                            <td><input type="password" id="conf_password"/></td>                            
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                            <input type="submit" onclick="saveCredentials(
+                                document.getElementById('conf_url').value,
+                                document.getElementById('conf_user').value,
+                                document.getElementById('conf_password').checked
+                                );"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div id="search_container" class="container">
+                Search  <input type="text" id="search"/>
+                Limit   <input type="text" id="limit"/>
+                Fuzzy   <input type="checkbox" id="fuzzy"/>
+                <input type="submit" onclick="doSearch(
+                                document.getElementById('search').value,
+                                document.getElementById('limit').value,
+                                document.getElementById('fuzzy').checked
+                                );"/>
+            </div>
+
+            <div id="error" class="container"></div>
+            <div id="total" class="container"></div>
+            <div id="hits" class="container"></div>
+        </div>
+    </body>
+</html>
