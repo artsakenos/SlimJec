@@ -12,7 +12,7 @@
 var jec_user = "es_user";
 var jec_password = "es_password";
 /**
- * Il search endpoint, può essere /_search o /index.../_search
+ * Il search endpoint, può includere l'indice, sempre senza il backslash finale.
  * @type {String}
  */
-var jec_host = 'https://ghandalf-45544.infodev.wordpress.com/_search';
+var jec_host = 'https://ghandalf-45544.infodev.wordpress.com';

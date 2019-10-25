@@ -31,7 +31,7 @@ Author     : artsakenos
                 <div id="collapse_credentials" class="collapse">
                     <table>
                         <tr>
-                            <td style="text-align: right">ElasticSearch, search URL (must end with (_search)</td>
+                            <td style="text-align: right">ElasticSearch URL (no final /)</td>
                             <td><input type="text" id="conf_url"/></td>                            
                         </tr>
                         <tr>
@@ -45,11 +45,13 @@ Author     : artsakenos
                         <tr>
                             <td></td>
                             <td>
-                            <input type="submit" onclick="saveCredentials(
-                                document.getElementById('conf_url').value,
-                                document.getElementById('conf_user').value,
-                                document.getElementById('conf_password').checked
-                                );"/>
+                                <button type="submit" class="btn btn-credentials btn-info"
+                                        data-toggle="collapse" data-target="#collapse_credentials" 
+                                        onclick="saveCredentials(
+                                                        document.getElementById('conf_url').value,
+                                                        document.getElementById('conf_user').value,
+                                                        document.getElementById('conf_password').value
+                                                        );">Save Credentials</button>
                             </td>
                         </tr>
                     </table>
@@ -67,8 +69,7 @@ Author     : artsakenos
                                 );"/>
             </div>
 
-            <div id="error" class="container"></div>
-            <div id="total" class="container"></div>
+            <div id="notifications" class="container"></div>
             <div id="hits" class="container"></div>
         </div>
     </body>

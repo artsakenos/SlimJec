@@ -35,10 +35,10 @@ function doSearch(search, limit, fuzzy) {
     if (jec_user) {
         // xmlHttp.withCredentials = true;  // Per esplicitare la richiesta di credenziali?
         var credentials = window.btoa(jec_user + ':' + jec_password); // Senza questo chiede le credential esplicitamente.
-        xmlHttp.open('POST', jec_host, [true, jec_user, jec_password]);
+        xmlHttp.open('POST', jec_host + "/_search", [true, jec_user, jec_password]);
         xmlHttp.setRequestHeader("Authorization", "Basic " + credentials);
     } else {
-        xmlHttp.open('POST', jec_host, false); // Senza credenziali
+        xmlHttp.open('POST', jec_host + "/_search", false); // Senza credenziali
     }
     xmlHttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 
@@ -48,20 +48,19 @@ function doSearch(search, limit, fuzzy) {
                 var response = JSON.parse(xmlHttp.responseText);
                 showHits(response);
             } else {
-                console.error(xmlHttp.statusText);
+                showMessage('Connection Error (' + xmlHttp.statusText + '), check the URL ' + jec_host, 'warning');
             }
         }
     };
     xmlHttp.onerror = function (event) {
-        console.error(xmlHttp.statusText);
-        showError("ERRORE: " + xmlHttp.statusText);
+        showMessage('Connection Error (' + xmlHttp.statusText + '), check the URL ' + jec_host, 'warning');
     };
 
     try {
         // console.log(JSON.stringify(body));
         xmlHttp.send(JSON.stringify(body));
     } catch (domexception) {
-        showError("Attenzione: devi disattivare il CORS, o utilizzare un repository con credentials.");
+        showMessage("Attenzione: disattivare il CORS, utilizzare un repository con credentials, o alloware mixed content (se da https).", 'warning');
     }
 }
 
@@ -69,8 +68,7 @@ function saveCredentials(url, user, password) {
     jec_host = url;
     jec_user = user;
     jec_password = password;
-    var html_ok = '<div class="alert alert-success">Credentials correctly saved.</div>';
-    document.getElementById('total').innerHTML = html_ok;
+    showMessage('Credentials correctly saved.', 'success');
 }
 
 /**
@@ -115,16 +113,26 @@ function showHits(response) {
         html_output += '<hr>';
     }
     var html_total = `<h2>Showing ${response.hits.hits.length} of ${response.hits.total} results.</h2>`;
-    html_total = '<div class="alert alert-success">' + html_total + '</div>';
-    document.getElementById('total').innerHTML = html_total;
+    showMessage(html_total, 'success');
     document.getElementById('hits').innerHTML = html_output;
 }
 
-function showError(message) {
-    document.getElementById('error').innerHTML = '<div id="error" class="alert alert-warning">' + message + '</div>';
+/**
+ * 
+ * @param {type} message
+ * @param {type} type Il bootstrap button type: success, warning, ...
+ * @return {undefined}
+ */
+function showMessage(message, type) {
+    $("#notifications").fadeIn();
+    var html_message = '<div class="alert alert-' + type + '">' + message + '</div>';
+    $('#notifications').html(html_message);
+    setTimeout(function () {
+        $("#notifications").fadeOut("slow");
+    }, 10000);
 }
 
 /**
  * TODO:
- * Mettere in un solo div i messaggi errore, successo etc, incapsulare bene il metodo
+ * togliere il _search dall'url
  */
