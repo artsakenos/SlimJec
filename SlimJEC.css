@@ -17,12 +17,25 @@ body {
     display: none;
 }
 
-#search_container {
+.container.collapse {
     padding: 20px;
     border: blanchedalmond solid;
     margin-bottom: 10px;
 }
 
-#credentials {
+#credentials, #navigation {
     padding: 20px;
+}
+
+a.nav-link[aria-expanded="true"] {
+    color: red !important;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
 }
