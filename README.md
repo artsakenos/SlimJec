@@ -15,7 +15,7 @@ It lets you
 * check index information
 
 You can make a *static page become a blog*, combining SlimJEC with a ElasticSearch instance.
-See https://artsakenos.github.io/SlimJEC/SlimJEC.html as an example.
+See https://artsakenos.github.io/slim_suite/SlimJEC.html as an example.
 
 ISSUES
 ======
