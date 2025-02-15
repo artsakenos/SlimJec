@@ -1,25 +1,54 @@
+This repository is deprecated, please refer to [SlimSuite](https://github.com/artsakenos/artsakenos.github.io/tree/master/slim_suite).
+---
 
-SlimJEC, a Slim Javascript Elasticsearch Client
-===============================================
-Pure Javascript Client for really basic access to ES instances.
-No fancy framework, No Node.js, No Python. Just your browser.
+# SlimJEC - Slim Javascript Elasticsearch Client
 
-SlimJec includes
-* A Javascript (SlimJEC.js, optionally SlimJEC_Config.js to set up the credentials): the code to make the client work
-* A HTML page (SlimJEC.html, SlimJEC.css): A static HTML wrapper for the client
+A lightweight, pure Javascript client for basic Elasticsearch operations. No frameworks, Node.js, or Python required - just your browser.
 
-It lets you
-* perform a fulltext search in *match mode* or *fuzzy mode*
-* perform a *match key:value* search on the field you want
-* post documents to your index
-* check index information
+## Overview
 
-You can make a *static page become a blog*, combining SlimJEC with a ElasticSearch instance.
-See https://artsakenos.github.io/slim_suite/SlimJEC.html as an example.
+SlimJEC provides a simple way to interact with Elasticsearch instances directly from your browser. It's perfect for creating static pages with dynamic search capabilities.
 
-ISSUES
-======
-* This was a quick experiment, I didn't perform any extensive tests, feel free to open issues or pull requests.
-* Trailing '/' should be automatically removed
-* If you want to perform *Cross-origin resource sharing* you have to set up your browser
-* Same if you want to be served by an http ES instance on a HTTP website
+## Components
+
+The project consists of:
+- **SlimJEC.js**: Core client functionality
+- **SlimJEC_Config.js**: Optional configuration file for credentials
+- **SlimJEC.html**: Static HTML wrapper
+- **SlimJEC.css**: Styling for the HTML interface
+
+## Features
+
+- **Search Capabilities**
+  - Full-text search with match and fuzzy modes
+  - Field-specific key:value searching
+  - Index information retrieval
+- **Document Management**
+  - Post new documents to your index
+- **Use Case Example**
+  - Transform static pages into dynamic blogs by combining SlimJEC with Elasticsearch
+
+## Demo
+
+Check out the live demo at: [SlimJEC Demo](https://artsakenos.github.io/slim_suite/SlimJEC.html)
+
+## Known Issues and Limitations
+
+1. This is an experimental project - testing has been limited
+2. Trailing '/' in URLs needs manual removal
+3. Cross-Origin Resource Sharing (CORS) requires browser configuration
+4. HTTP Elasticsearch instances on HTTPS websites require additional setup
+
+## Contributing
+
+This project welcomes contributions! Feel free to:
+- Open issues for bugs or feature requests
+- Submit pull requests
+- Help with testing and documentation
+
+## Getting Started
+
+[Add installation and basic usage instructions here]
+
+---
+**Note**: This is a lightweight client designed for basic Elasticsearch operations. For more complex use cases, consider using official Elasticsearch clients.
